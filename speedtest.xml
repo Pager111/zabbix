@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-02-05T19:02:05Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>speedtest</template>
+            <name>speedtest</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Speed Test</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>download</name>
+                    <type>TRAP</type>
+                    <key>key.download</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>Mbps</units>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Online</name>
+                    <type>TRAP</type>
+                    <key>key.net.up</key>
+                    <delay>0</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Ping</name>
+                    <type>TRAP</type>
+                    <key>key.ping</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>ms</units>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Server City</name>
+                    <type>TRAP</type>
+                    <key>key.srv.city</key>
+                    <delay>0</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Server Distance (km)</name>
+                    <type>TRAP</type>
+                    <key>key.srv.km</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>km</units>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Server Name</name>
+                    <type>TRAP</type>
+                    <key>key.srv.name</key>
+                    <delay>0</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>upload</name>
+                    <type>TRAP</type>
+                    <key>key.upload</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>Mbps</units>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WAN IP</name>
+                    <type>TRAP</type>
+                    <key>key.wan.ip</key>
+                    <delay>0</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Speed Test</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{diff(0)}&gt;0</expression>
+                            <name>External IP Changed</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <screens>
+                <screen>
+                    <name>Speedtest Status</name>
+                    <hsize>1</hsize>
+                    <vsize>1</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>Speed-test Upload vs Download</name>
+                                <host>speedtest</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+            </screens>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Speed-test Upload vs Download</name>
+            <show_work_period>NO</show_work_period>
+            <show_triggers>NO</show_triggers>
+            <graph_items>
+                <graph_item>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>1A7C11</color>
+                    <calc_fnc>MAX</calc_fnc>
+                    <item>
+                        <host>speedtest</host>
+                        <key>key.download</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>000066</color>
+                    <calc_fnc>MAX</calc_fnc>
+                    <item>
+                        <host>speedtest</host>
+                        <key>key.upload</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
